@@ -1,2 +1,3 @@
-# think_like_a_programmer_problems
+# Think Like a Programmer
+
 Problems from the book, Think Like a Programmer
