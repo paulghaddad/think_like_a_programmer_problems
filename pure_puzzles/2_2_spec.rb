@@ -1,6 +1,6 @@
 require "./2_2"
 
-describe "Problem 2.1" do
+describe "Problem 2.2" do
   it "outputs an upside down triangle" do
     shape = upside_down_triangle(height: 8)
 
