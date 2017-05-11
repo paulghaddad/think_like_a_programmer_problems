@@ -1,7 +1,7 @@
 require "./2_3"
 
 describe "Problem 2.3" do
-  it "output an X" do
+  it "outputs an X" do
     shape = star
 
     expect(shape).to eq(STAR)
