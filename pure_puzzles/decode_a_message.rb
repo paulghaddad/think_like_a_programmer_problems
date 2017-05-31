@@ -1,5 +1,3 @@
-require 'pry'
-
 MODES = %i(uppercase lowercase punctuation).cycle
 
 PUNCTUATION_DECODING_MAP = {
@@ -30,26 +28,32 @@ def capture_message
           modulo = overall_int % 27
           if modulo == 0
             @mode = MODES.next
+            puts "Switched to #{@mode} mode!"
+            break
           end
-          # puts decode_to_uppercase(modulo)
           puts "Modulo: #{modulo}"
           puts "Mode: #{@mode}"
+          puts decode_to_uppercase(modulo)
         when :lowercase
           modulo = overall_int % 27
           if modulo == 0
             @mode = MODES.next
+            puts "Switched to #{@mode} mode!"
+            break
           end
           puts "Modulo: #{modulo}"
           puts "Mode: #{@mode}"
-          # puts decode_to_lowercase(modulo)
+          puts decode_to_lowercase(modulo)
         when :punctuation
           modulo = overall_int % 9
           if modulo == 0
             @mode = MODES.next
+            puts "Switched to #{@mode} mode!"
+            break
           end
           puts "Modulo: #{modulo}"
           puts "Mode: #{@mode}"
-          # puts decode_to_punctuation(modulo)
+          puts decode_to_punctuation(modulo)
         end
 
         break
@@ -78,8 +82,6 @@ def decode_to_punctuation(number)
 end
 
 def main
-  # read in a stream of text until a line break is reached
-
   @mode = MODES.next
   puts "Enter the coded message:"
 
@@ -87,4 +89,3 @@ def main
 end
 
 main
-
