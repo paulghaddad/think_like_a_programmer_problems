@@ -1,14 +1,23 @@
 require 'pry'
 
+MODES = %i(uppercase lowercase punctuation).cycle
+
+PUNCTUATION_DECODING_MAP = {
+  1 => "!",
+  2 => "?",
+  3 => ",",
+  4 => ".",
+  5 => " ",
+  6 => ";",
+  7 => "\"",
+  8 => "\'"
+}
+
 def ascii_converter(character)
   character.ord - "0".ord
 end
 
-def main
-  # read in a stream of text until a line break is reached
-
-  puts "Enter the coded message:"
-
+def capture_message
   loop do
     overall_int = 0
 
@@ -16,7 +25,33 @@ def main
       digit_character = gets.chomp
 
       if digit_character == ","
-        puts overall_int
+        case @mode
+        when :uppercase
+          modulo = overall_int % 27
+          if modulo == 0
+            @mode = MODES.next
+          end
+          # puts decode_to_uppercase(modulo)
+          puts "Modulo: #{modulo}"
+          puts "Mode: #{@mode}"
+        when :lowercase
+          modulo = overall_int % 27
+          if modulo == 0
+            @mode = MODES.next
+          end
+          puts "Modulo: #{modulo}"
+          puts "Mode: #{@mode}"
+          # puts decode_to_lowercase(modulo)
+        when :punctuation
+          modulo = overall_int % 9
+          if modulo == 0
+            @mode = MODES.next
+          end
+          puts "Modulo: #{modulo}"
+          puts "Mode: #{@mode}"
+          # puts decode_to_punctuation(modulo)
+        end
+
         break
       end
 
@@ -28,6 +63,27 @@ def main
       overall_int = (overall_int * 10 + ascii_converter(digit_character))
     end
   end
+end
+
+def decode_to_uppercase(number)
+  (number + "A".ord - 1).chr
+end
+
+def decode_to_lowercase(number)
+  (number + "a".ord - 1).chr
+end
+
+def decode_to_punctuation(number)
+  PUNCTUATION_DECODING_MAP[number]
+end
+
+def main
+  # read in a stream of text until a line break is reached
+
+  @mode = MODES.next
+  puts "Enter the coded message:"
+
+  capture_message
 end
 
 main
