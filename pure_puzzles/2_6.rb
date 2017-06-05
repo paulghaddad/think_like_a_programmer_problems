@@ -12,6 +12,7 @@ class BinaryDecimalConverter
     end
 
     binary_number = ""
+
     until binary_digits.empty?
       binary_number += binary_digits.pop.to_s
     end
