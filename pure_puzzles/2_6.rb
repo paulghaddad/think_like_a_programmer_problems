@@ -1,5 +1,3 @@
-require 'pry'
-
 class BinaryDecimalConverter
   def self.to_binary(decimal_number)
     binary_digits = []

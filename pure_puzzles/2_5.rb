@@ -1,5 +1,3 @@
-require 'pry'
-
 class ISBNValidator
   attr_reader :number, :digits
 

@@ -1,4 +1,4 @@
-def upside_down_triangle(height:)
+def half_upside_down_triangle(height:)
   output = ""
 
   for row in 1..height

@@ -1,5 +1,3 @@
-require 'pry'
-
 odd_count = 0
 even_count = 0
 

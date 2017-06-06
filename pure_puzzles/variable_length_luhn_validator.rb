@@ -1,6 +1,4 @@
 require "./ascii_converter"
-require "pry"
-
 class VariableLengthLuhnValidator
   attr_reader :input_number
 
