@@ -1,48 +1,94 @@
-require 'pry'
-
 class NumberSystemConverter
+  CHARACTER_TO_NUMBER_MAP = {
+    "0" => 0,
+    "1" => 1,
+    "2" => 2,
+    "3" => 3,
+    "4" => 4,
+    "5" => 5,
+    "6" => 6,
+    "7" => 7,
+    "8" => 8,
+    "9" => 9,
+    "A" => 10,
+    "B" => 11,
+    "C" => 12,
+    "D" => 13,
+    "E" => 14,
+    "F" => 15
+  }
+
+  NUMBER_TO_CHARACTER_MAP = {
+    0 => "0",
+    1 => "1",
+    2 => "2",
+    3 => "3",
+    4 => "4",
+    5 => "5",
+    6 => "6",
+    7 => "7",
+    8 => "8",
+    9 => "9",
+    10 => "A",
+    11 => "B",
+    12 => "C",
+    13 => "D",
+    14 => "E",
+    15 => "F"
+  }
+
   attr_reader :number, :base
 
   def initialize(number:, base:)
-    @number = number
+    @number = String(number)
     @base = base
   end
 
-  def to_binary
-    binary_digits = []
-    absolute_value = number.abs
+  def to_base(base)
+    decimal_number = to_decimal.to_i.abs
+    return "0" if number == "0"
 
-    while absolute_value > 0
-      binary_digits << absolute_value % 2
-      absolute_value /= 2
+    converted_number = ""
+
+    while decimal_number > 0
+      new_digit = NUMBER_TO_CHARACTER_MAP.fetch(decimal_number % base)
+      converted_number.prepend(new_digit)
+      decimal_number /= base
     end
 
-    binary_number = ""
-    until binary_digits.empty?
-      binary_number += binary_digits.pop.to_s
+    if number.start_with?("-")
+      converted_number.prepend("-")
+    else
+      converted_number
     end
-
-    sign * binary_number.to_i
   end
 
   def to_decimal
-    base = 2
-    binary_digits = number.to_s.split("").map(&:to_i)
-    number_of_digits = binary_digits.size
+    digits = normalize_digits
+    number_of_digits = digits.size
     exponential_factor = number_of_digits - 1
 
     decimal_number = 0
-    binary_digits.each.with_index do |digit, index|
+    digits.each.with_index do |digit, index|
       exponential_factor = number_of_digits - index - 1
       decimal_number += digit * base ** exponential_factor
     end
 
-    sign * decimal_number
+    if number.start_with?("-")
+      String(decimal_number * -1)
+    else
+      String(decimal_number)
+    end
   end
 
   private
 
+  def normalize_digits
+    absolute_value = number.gsub("-", "")
+    absolute_value.split("").map { |digit| CHARACTER_TO_NUMBER_MAP.fetch(digit) }
+  end
+
   def sign
-    number.zero? ? 1 : number / number.abs
+    number.start_with?("-") ? -1 : 1
   end
 end
