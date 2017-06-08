@@ -1,4 +1,6 @@
 class StatisticsAnalyzer
+  MAX_RESPONSE = 10
+
   attr_reader :collection
 
   def initialize(collection:)
@@ -6,24 +8,30 @@ class StatisticsAnalyzer
   end
 
   def mode
-    highest_frequency = 0
-    current_frequency = 0
-    i = 0
+    histogram = build_histogram(collection)
 
-    collection.sort.inject(nil) do |most_frequent, current_element|
-      current_frequency += 1
+    most_frequent = 0
+    mode = nil
 
-      if i == collection.size || current_element != collection[i + 1]
-        if current_frequency > highest_frequency
-          highest_frequency = current_frequency
-          most_frequent = current_element
-        end
-
-        current_frequency = 0
+    histogram.each.with_index do |frequency, index|
+      if frequency > most_frequent
+        most_frequent = frequency
+        mode = index + 1
       end
-
-      i += 1
-      most_frequent
     end
+
+    mode
+  end
+
+  private
+
+  def build_histogram(elements)
+    histogram = Array.new(MAX_RESPONSE, 0)
+
+    elements.each do |element|
+      histogram[element - 1] += 1
+    end
+
+    histogram
   end
 end
