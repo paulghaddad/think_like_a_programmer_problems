@@ -1,5 +1,3 @@
-require 'pry'
-
 class QSort
   def self.sort_array(collection, comparison_function)
     collection.sort(&comparison_function)
