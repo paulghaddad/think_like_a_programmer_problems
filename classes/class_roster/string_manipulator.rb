@@ -19,12 +19,12 @@ class StringManipulator
   end
 
   def character_at(position)
-    raise ArgumentError if position > string.length - 1
+    raise ArgumentError if invalid_position?(position)
     string[position]
   end
 
   def remove(position, number)
-    raise ArgumentError if position > string.length - 1
+    raise ArgumentError if invalid_position?(position)
     ending_position = position + number
 
     new_string = ""
@@ -33,5 +33,11 @@ class StringManipulator
     end
 
     new_string
+  end
+
+  private
+
+  def invalid_position?(position)
+    position > string.length - 1
   end
 end
