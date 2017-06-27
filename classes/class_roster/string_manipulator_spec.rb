@@ -40,8 +40,19 @@ describe StringManipulator do
         string = "Ruby On Rails"
         string_manipulator = StringManipulator.new(string)
 
-        expect { string_manipulator.character_at(12) }.to raise_error(ArgumentError)
+        expect { string_manipulator.character_at(13) }.to raise_error(ArgumentError)
       end
+    end
+  end
+
+  describe "#[]" do
+    it "returns the character at the specified position in the string" do
+      string = "Ruby On Rails"
+      string_manipulator = StringManipulator.new(string)
+
+      eighth_character = string_manipulator[8]
+
+      expect(eighth_character).to eq("R")
     end
   end
 end

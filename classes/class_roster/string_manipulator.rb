@@ -1,4 +1,9 @@
+require 'forwardable'
+
 class StringManipulator
+  extend Forwardable
+  def_delegator :@string, :[], :[]
+
   attr_reader :string
 
   def initialize(string)
