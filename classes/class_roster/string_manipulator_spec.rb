@@ -55,5 +55,40 @@ describe StringManipulator do
       expect(eighth_character).to eq("R")
     end
   end
+
+  describe "#remove" do
+    context "valid parameters" do
+      it "removes the specified number of characters from the string from the starting position" do
+        string = "Ruby On Rails"
+        string_manipulator = StringManipulator.new(string)
+
+        modified_string = string_manipulator.remove(8, 4)
+
+        expect(modified_string).to eq("Ruby On s")
+      end
+    end
+
+    context "invalid parameters" do
+      context "invalid starting position" do
+        it "an Argument Error is raised" do
+          string = "Ruby On Rails"
+          string_manipulator = StringManipulator.new(string)
+
+          expect { string_manipulator.remove(13, 4) }.to raise_error(ArgumentError)
+        end
+      end
+
+      context "invalid number of characters to remove" do
+        it "only removes the characters to the end of the string" do
+          string = "Ruby On Rails"
+          string_manipulator = StringManipulator.new(string)
+
+          modified_string = string_manipulator.remove(9, 10)
+
+          expect(modified_string).to eq("Ruby On R")
+        end
+      end
+    end
+  end
 end
 
