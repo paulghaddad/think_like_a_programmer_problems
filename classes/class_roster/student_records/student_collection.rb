@@ -24,6 +24,23 @@ class StudentCollection
     end
   end
 
+  def all_records
+    loop_pointer = @list_head
+
+    records = []
+
+    while loop_pointer
+      records << loop_pointer.student_data
+      loop_pointer = loop_pointer.next
+    end
+
+    records
+  end
+
+  def number_of_students
+    all_records.size
+  end
+
   def remove_record(id_num)
     loop_pointer = @list_head
     trailing = nil
@@ -38,6 +55,36 @@ class StudentCollection
     @list_head = list_head.next if trailing.nil?
 
     trailing.next = loop_pointer.next
+  end
+
+  def average_grade
+    loop_pointer = @list_head
+
+    number_of_records = 0
+    sum_of_grades = 0.0
+    while loop_pointer
+      number_of_records += 1
+      sum_of_grades += loop_pointer.student_data.grade
+      loop_pointer = loop_pointer.next
+    end
+
+    (sum_of_grades / number_of_records).round(2)
+  end
+
+  def records_within_range(low_grade:, high_grade:)
+    loop_pointer = @list_head
+
+    students_within_range = []
+
+    while loop_pointer
+      student_record = loop_pointer.student_data
+      if (low_grade..high_grade).cover?(student_record.grade)
+        students_within_range << loop_pointer.student_data
+      end
+      loop_pointer = loop_pointer.next
+    end
+
+    students_within_range
   end
 
   class StudentNode

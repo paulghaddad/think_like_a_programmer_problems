@@ -18,13 +18,7 @@ class StudentRecord
     @name = name
   end
 
-  def set_grade(grade)
-    raise InvalidGradeError unless valid_grade?(grade)
-    @grade = grade
-  end
-
   def letter_grade
-    raise InvalidGradeError unless valid_grade?(grade)
     category = 0
     while category < NUMBER_CATEGORIES && LOWEST_GRADE_SCORE[category] <= grade
       category += 1
@@ -33,7 +27,16 @@ class StudentRecord
     GRADE_LETTER[category - 1]
   end
 
+  def to_s
+    "Student Name: %s. Student ID: %s. Student Grade: %s" % [name, id, grade]
+  end
+
   private
+
+  def set_grade(grade)
+    raise InvalidGradeError unless valid_grade?(grade)
+    @grade = grade
+  end
 
   def valid_grade?(grade)
     grade >= 0 && grade <= 100
