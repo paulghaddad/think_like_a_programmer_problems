@@ -14,7 +14,7 @@ student_collection.add_record(student_1)
 
 student_collection.remove_record(4875)
 
-puts "\n\nThere are #{student_collection.number_of_students} Student Records:\n"
+puts "\n\nThere are #{student_collection.number_of_records} Student Records:\n"
 
 puts student_collection.all_records
 

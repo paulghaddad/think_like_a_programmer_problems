@@ -1,3 +1,5 @@
+require "./student_node"
+
 class StudentCollection
   def initialize
     @list_head = nil
@@ -37,7 +39,7 @@ class StudentCollection
     records
   end
 
-  def number_of_students
+  def number_of_records
     all_records.size
   end
 
@@ -85,15 +87,5 @@ class StudentCollection
     end
 
     students_within_range
-  end
-
-  class StudentNode
-    attr_reader :student_data
-    attr_accessor :next
-
-    def initialize(student_data)
-      @student_data = student_data
-      @next = nil
-    end
   end
 end
