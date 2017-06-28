@@ -6,7 +6,7 @@ describe StudentRecord do
       it "sets the student's grade, id and name" do
         student = StudentRecord.new(grade: 90, id: 1, name: "Bob")
 
-        expect(student).to have_attributes(grade: 90,
+        expect(student).to have_attributes(numeric_grade: 90,
                                            id: 1,
                                            name: "Bob")
       end
@@ -19,23 +19,6 @@ describe StudentRecord do
         end
       end
 
-      context "invalid grade" do
-        it "raises an Invalid Grade Error" do
-          expect do
-            StudentRecord.new(grade: -1, id: 1, name: "Bob")
-          end.to raise_error(StudentRecord::InvalidGradeError)
-        end
-      end
-    end
-  end
-
-  describe "letter_grade" do
-    it "determines the letter grade corresponding to a numeric grade" do
-      student = StudentRecord.new(grade: 90, id: 1, name: "Bob")
-
-      letter_grade = student.letter_grade
-
-      expect(letter_grade).to eq("A-")
     end
   end
 

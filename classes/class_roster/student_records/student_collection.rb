@@ -1,4 +1,5 @@
 require "./student_node"
+require 'pry'
 
 class StudentCollection
   def initialize
@@ -66,7 +67,7 @@ class StudentCollection
     sum_of_grades = 0.0
     while loop_pointer
       number_of_records += 1
-      sum_of_grades += loop_pointer.student_data.grade
+      sum_of_grades += loop_pointer.student_data.numeric_grade
       loop_pointer = loop_pointer.next
     end
 
@@ -80,7 +81,7 @@ class StudentCollection
 
     while loop_pointer
       student_record = loop_pointer.student_data
-      if (low_grade..high_grade).cover?(student_record.grade)
+      if (low_grade..high_grade).cover?(student_record.numeric_grade)
         students_within_range << loop_pointer.student_data
       end
       loop_pointer = loop_pointer.next
