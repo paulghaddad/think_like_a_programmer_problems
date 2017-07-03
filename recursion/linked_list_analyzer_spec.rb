@@ -7,11 +7,12 @@ describe LinkedListAnalyzer do
       a = LinkedListNode.new(-4)
       b = LinkedListNode.new(1)
       c = LinkedListNode.new(-9)
-
       a.next = b
       b.next = c
 
-      expect(LinkedListAnalyzer.negative_number_count(a)).to eq(2)
+      negative_number_count = LinkedListAnalyzer.negative_number_count(a)
+
+      expect(negative_number_count).to eq(2)
     end
   end
 end
