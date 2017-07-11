@@ -1,5 +1,3 @@
-require 'pry'
-
 class ArrayAnalyer
   def self.sum_with_iterative_solution(array)
     sum = 0
