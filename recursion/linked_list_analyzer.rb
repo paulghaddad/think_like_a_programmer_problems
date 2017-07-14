@@ -22,6 +22,10 @@ class LinkedListAnalyzer
     sum_of_positive_numbers_recursive(head)
   end
 
+  def odd_parity?
+    odd_bits_count(head).odd?
+  end
+
   private
 
   def negative_numbers(node)
@@ -61,5 +65,17 @@ class LinkedListAnalyzer
     end
 
     sum_of_positives
+  end
+
+  def odd_bits_count(node)
+    return 0 if node.nil?
+
+    sum_of_odd_bits = odd_bits_count(node.next)
+
+    if node.value.odd?
+      sum_of_odd_bits += 1
+    end
+
+    sum_of_odd_bits
   end
 end
