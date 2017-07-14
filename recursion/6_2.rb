@@ -1,25 +1,33 @@
 class BinaryStringAnalyzer
-  def self.bool?(binary_string)
-    return false if binary_string == ""
-
-    first_char = binary_string[0].to_i
-
-    first_char.odd? ^ self.bool?(binary_string[1..-1])
+  def self.odd_parity_1?(binary_string)
+    binary_numbers = binary_string.split("").map(&:to_i)
+    bool_1?(binary_numbers)
   end
 
-  def self.bool_2?(binary_string)
-    odd_count = self.odd_count(binary_string)
+  def self.odd_parity_2?(binary_string)
+    binary_numbers = binary_string.split("").map(&:to_i)
+    odd_count = self.odd_count(binary_numbers)
     odd_count.odd?
   end
 
-  def self.odd_count(binary_string)
-    return 0 if binary_string == ""
-    odd_count = odd_count(binary_string[0..-2])
+  def self.odd_count(binary_numbers)
+    return 0 if binary_numbers.empty?
+    odd_count = odd_count(binary_numbers[0..-2])
 
-    if binary_string[-1].to_i.odd?
+    if binary_numbers[-1].to_i.odd?
       odd_count += 1
     else
       odd_count
     end
+  end
+
+  private
+
+  def self.bool_1?(binary_numbers)
+    return false if binary_numbers.empty?
+
+    first_int = binary_numbers.first
+
+    first_int.odd? ^ self.bool_1?(binary_numbers[1..-1])
   end
 end

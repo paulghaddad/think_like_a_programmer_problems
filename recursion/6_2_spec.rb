@@ -1,12 +1,12 @@
 require "./6_2"
 
 describe "Problem 6.2" do
-  describe "#bool?" do
+  describe "#odd_parity_1?" do
     context "binary string with odd parity" do
       it "returns true" do
         binary_string = "01000110"
 
-        expect(BinaryStringAnalyzer.bool?(binary_string)).to be true
+        expect(BinaryStringAnalyzer.odd_parity_1?(binary_string)).to be true
       end
     end
 
@@ -14,17 +14,17 @@ describe "Problem 6.2" do
       it "returns false" do
         binary_string = "01000010"
 
-        expect(BinaryStringAnalyzer.bool?(binary_string)).to be false
+        expect(BinaryStringAnalyzer.odd_parity_1?(binary_string)).to be false
       end
     end
   end
 
-  describe "#boll_2?" do
+  describe "#odd_parity_2?" do
     context "binary string with odd parity" do
       it "returns true" do
         binary_string = "01000110"
 
-        expect(BinaryStringAnalyzer.bool_2?(binary_string)).to be true
+        expect(BinaryStringAnalyzer.odd_parity_2?(binary_string)).to be true
       end
     end
 
@@ -32,7 +32,7 @@ describe "Problem 6.2" do
       it "returns false" do
         binary_string = "01000010"
 
-        expect(BinaryStringAnalyzer.bool_2?(binary_string)).to be false
+        expect(BinaryStringAnalyzer.odd_parity_2?(binary_string)).to be false
       end
     end
   end
