@@ -1,11 +1,9 @@
 class BinaryStringAnalyzer
-  def self.odd_parity_1?(binary_string)
-    binary_numbers = binary_string.split("").map(&:to_i)
+  def self.odd_parity_1?(binary_numbers)
     bool_1?(binary_numbers)
   end
 
-  def self.odd_parity_2?(binary_string)
-    binary_numbers = binary_string.split("").map(&:to_i)
+  def self.odd_parity_2?(binary_numbers)
     odd_count = self.odd_count(binary_numbers)
     odd_count.odd?
   end
