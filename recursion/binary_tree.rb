@@ -5,28 +5,6 @@ class BinaryTree
     @root = root
   end
 
-  def largest_node
-    return 0 if root.nil?
-
-    if (root.right.nil? && root.left.nil?)
-      return root.value
-    end
-
-    left_max = BinaryTree.new(root: root.left).largest_node
-    right_max = BinaryTree.new(root: root.right).largest_node
-    max_num = root.value
-
-    if left_max > max_num
-      max_num = left_max
-    end
-
-    if right_max > max_num
-      max_num = right_max
-    end
-
-    max_num
-  end
-
   def number_of_leaves
     leaf_count(root)
   end

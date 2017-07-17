@@ -1,7 +1,8 @@
 require "./binary_tree_node"
 require "./binary_tree"
+require "./binary_tree_analyzer"
 
-describe BinaryTree do
+describe BinaryTreeAnalyzer do
   describe "#largest_node" do
     it "returns the largest leaf value" do
       a = BinaryTreeNode.new(1)
@@ -10,8 +11,9 @@ describe BinaryTree do
       a.left = b
       a.right = c
       binary_tree = BinaryTree.new(root: a)
+      binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
 
-      largest_node_value = binary_tree.largest_node
+      largest_node_value = binary_tree_analyzer.largest_node
 
       expect(largest_node_value).to eq(4)
     end
