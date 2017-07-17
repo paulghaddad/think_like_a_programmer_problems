@@ -31,6 +31,10 @@ class LinkedListAnalyzer
     element_count(node: head, element: element)
   end
 
+  def largest_number
+    largest_number_recursive(head)
+  end
+
   private
 
   def negative_numbers(node)
@@ -95,6 +99,19 @@ class LinkedListAnalyzer
       number_of_hits += 1
     else
       number_of_hits
+    end
+  end
+
+  def largest_number_recursive(node)
+    return node.value if node.next.nil?
+
+    largest_element = largest_number_recursive(node.next)
+    current_element = node.value
+
+    if current_element > largest_element
+      current_element
+    else
+      largest_element
     end
   end
 end

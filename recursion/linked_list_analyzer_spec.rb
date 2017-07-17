@@ -72,6 +72,16 @@ describe LinkedListAnalyzer do
     end
   end
 
+  describe "#largest_number" do
+    it "returns the largest number in the linked list" do
+      linked_list_analyzer = build_linked_list_analyzer(1, 2, 1, 8, 0, 1)
+
+      largest_number = linked_list_analyzer.largest_number
+
+      expect(largest_number).to eq(8)
+    end
+  end
+
   private
 
   def build_linked_list_analyzer(*node_values)
