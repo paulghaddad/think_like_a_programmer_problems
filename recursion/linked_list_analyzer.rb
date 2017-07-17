@@ -1,4 +1,5 @@
 require 'pry'
+
 class LinkedListAnalyzer
   attr_reader :head
 
@@ -24,6 +25,10 @@ class LinkedListAnalyzer
 
   def odd_parity?
     odd_bits_count(head).odd?
+  end
+
+  def count(element:)
+    element_count(node: head, element: element)
   end
 
   private
@@ -77,5 +82,19 @@ class LinkedListAnalyzer
     end
 
     sum_of_odd_bits
+  end
+
+  def element_count(node:, element:)
+    return 0 if node.nil?
+
+    number_of_hits = element_count(node: node.next, element: element)
+
+    target_element_match = node.value == element
+
+    if target_element_match
+      number_of_hits += 1
+    else
+      number_of_hits
+    end
   end
 end

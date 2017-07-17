@@ -62,6 +62,16 @@ describe LinkedListAnalyzer do
     end
   end
 
+  describe "#count_of_element" do
+    it "returns the number of times the element appears in the linked list" do
+      linked_list_analyzer = build_linked_list_analyzer(1, 2, 1, -4, 0, 1)
+
+      count = linked_list_analyzer.count(element: 1)
+
+      expect(count).to eq(3)
+    end
+  end
+
   private
 
   def build_linked_list_analyzer(*node_values)
