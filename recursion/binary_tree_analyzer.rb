@@ -11,6 +11,14 @@ class BinaryTreeAnalyzer
     largest_node_recursive(root: root)
   end
 
+  def number_of_leaves
+    leaf_count(root)
+  end
+
+  def heap?
+    true
+  end
+
   private
 
   def largest_node_recursive(root:)
@@ -33,5 +41,17 @@ class BinaryTreeAnalyzer
     end
 
     max_num
+  end
+
+  def leaf_count(root)
+    return 0 if root.nil?
+
+    if (root.right.nil? && root.left.nil?)
+       1
+    else
+      left_count = leaf_count(root.left)
+      right_count = leaf_count(root.right)
+      left_count + right_count
+    end
   end
 end
