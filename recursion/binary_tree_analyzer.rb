@@ -16,7 +16,7 @@ class BinaryTreeAnalyzer
   end
 
   def heap?
-    true
+    is_a_heap?(root)
   end
 
   private
@@ -53,5 +53,22 @@ class BinaryTreeAnalyzer
       right_count = leaf_count(root.right)
       left_count + right_count
     end
+  end
+
+  def is_a_heap?(root)
+    return true if on_a_leaf?(root)
+
+    left_leaf_a_heap = is_a_heap?(root.left)
+    right_leaf_a_heap = is_a_heap?(root.right)
+
+    if left_leaf_a_heap && right_leaf_a_heap && root.value > root.left.value && root.value > root.right.value
+      true
+    else
+      false
+    end
+  end
+
+  def on_a_leaf?(node)
+    node.nil? || node.left.nil? || node.right.nil?
   end
 end

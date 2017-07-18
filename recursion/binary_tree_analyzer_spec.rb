@@ -60,5 +60,29 @@ describe BinaryTreeAnalyzer do
         expect(binary_tree_analyzer.heap?).to be true
       end
     end
+
+    context "not a heap" do
+      it "returns false" do
+        a = BinaryTreeNode.new(10)
+        b = BinaryTreeNode.new(8)
+        c = BinaryTreeNode.new(1)
+        d = BinaryTreeNode.new(4)
+        e = BinaryTreeNode.new(5)
+        f = BinaryTreeNode.new(2)
+        g = BinaryTreeNode.new(7)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.left = f
+        c.right = g
+
+        binary_tree = BinaryTree.new(root: a)
+        binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+        expect(binary_tree_analyzer.heap?).to be false
+      end
+    end
   end
 end
