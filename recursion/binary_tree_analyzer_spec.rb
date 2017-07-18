@@ -85,4 +85,78 @@ describe BinaryTreeAnalyzer do
       end
     end
   end
+
+  describe "binary_search_tree?" do
+    context "is a binary search tree" do
+      it "returns true" do
+        a = BinaryTreeNode.new(8)
+        b = BinaryTreeNode.new(3)
+        c = BinaryTreeNode.new(10)
+        d = BinaryTreeNode.new(1)
+        e = BinaryTreeNode.new(6)
+        f = BinaryTreeNode.new(9)
+        g = BinaryTreeNode.new(14)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.left = f
+        c.right = g
+
+        binary_tree = BinaryTree.new(root: a)
+        binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+        expect(binary_tree_analyzer.binary_search_tree?).to be true
+      end
+    end
+
+    context "not a binary search tree because two leaves aren't binaries" do
+      it "returns false" do
+        a = BinaryTreeNode.new(8)
+        b = BinaryTreeNode.new(3)
+        c = BinaryTreeNode.new(10)
+        d = BinaryTreeNode.new(1)
+        e = BinaryTreeNode.new(6)
+        f = BinaryTreeNode.new(14)
+        g = BinaryTreeNode.new(9)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.left = f
+        c.right = g
+
+        binary_tree = BinaryTree.new(root: a)
+        binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+        expect(binary_tree_analyzer.binary_search_tree?).to be false
+      end
+    end
+
+    context "not a binary search tree because two subtrees aren't binaries" do
+      it "returns false" do
+        a = BinaryTreeNode.new(8)
+        b = BinaryTreeNode.new(10)
+        c = BinaryTreeNode.new(10)
+        d = BinaryTreeNode.new(1)
+        e = BinaryTreeNode.new(6)
+        f = BinaryTreeNode.new(9)
+        g = BinaryTreeNode.new(14)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.left = f
+        c.right = g
+
+        binary_tree = BinaryTree.new(root: a)
+        binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+        expect(binary_tree_analyzer.binary_search_tree?).to be false
+      end
+    end
+  end
 end

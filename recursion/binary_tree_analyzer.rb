@@ -19,6 +19,10 @@ class BinaryTreeAnalyzer
     is_a_heap?(root)
   end
 
+  def binary_search_tree?
+    is_a_binary_search_tree?(root)
+  end
+
   private
 
   def largest_node_recursive(root:)
@@ -68,7 +72,20 @@ class BinaryTreeAnalyzer
     end
   end
 
+  def is_a_binary_search_tree?(node)
+    return true if on_a_leaf?(node)
+
+    left_leaf_a_binary_tree = is_a_binary_search_tree?(node.left)
+    right_leaf_a_binary_tree = is_a_binary_search_tree?(node.right)
+
+    if left_leaf_a_binary_tree && right_leaf_a_binary_tree && node.value > node.left.value && node.value < node.right.value
+      true
+    else
+      false
+    end
+  end
+
   def on_a_leaf?(node)
-    node.nil? || node.left.nil? || node.right.nil?
+    node.nil? || (node.left.nil? && node.right.nil?)
   end
 end
