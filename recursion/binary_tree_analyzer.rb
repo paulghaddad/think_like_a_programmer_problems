@@ -23,6 +23,11 @@ class BinaryTreeAnalyzer
     is_a_binary_search_tree?(root)
   end
 
+  def binary_search(element)
+    check_for_valid_binary_search_tree(root)
+    search_binary_tree(root, element)
+  end
+
   private
 
   def largest_node_recursive(root:)
@@ -87,5 +92,31 @@ class BinaryTreeAnalyzer
 
   def on_a_leaf?(node)
     node.nil? || (node.left.nil? && node.right.nil?)
+  end
+
+  def check_for_valid_binary_search_tree(node)
+    unless is_a_binary_search_tree?(node)
+      raise InvalidBinarySearchTreeError.new("Not a valid binary search tree!")
+    end
+  end
+
+  def search_binary_tree(node, element)
+    return if node.nil?
+    return true if node.value == element
+
+    element_present_in_left_node = search_binary_tree(node.left, element)
+    element_present_in_right_node = search_binary_tree(node.right, element)
+
+    if element_present_in_left_node || element_present_in_right_node
+      true
+    else
+      false
+    end
+  end
+end
+
+class InvalidBinarySearchTreeError < StandardError
+  def initialize(message)
+    super(message)
   end
 end

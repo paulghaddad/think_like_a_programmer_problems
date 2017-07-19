@@ -159,4 +159,78 @@ describe BinaryTreeAnalyzer do
       end
     end
   end
+
+  describe "#binary_search" do
+    context "element is present in the tree" do
+      it "returns true" do
+        a = BinaryTreeNode.new(8)
+        b = BinaryTreeNode.new(3)
+        c = BinaryTreeNode.new(10)
+        d = BinaryTreeNode.new(1)
+        e = BinaryTreeNode.new(6)
+        f = BinaryTreeNode.new(4)
+        g = BinaryTreeNode.new(14)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.left = f
+        c.right = g
+
+        binary_tree = BinaryTree.new(root: a)
+        binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+        expect(binary_tree_analyzer.binary_search(4)).to be true
+      end
+    end
+
+    context "element is not present in the tree" do
+      it "returns false" do
+        a = BinaryTreeNode.new(8)
+        b = BinaryTreeNode.new(3)
+        c = BinaryTreeNode.new(10)
+        d = BinaryTreeNode.new(1)
+        e = BinaryTreeNode.new(6)
+        f = BinaryTreeNode.new(9)
+        g = BinaryTreeNode.new(14)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.left = f
+        c.right = g
+
+        binary_tree = BinaryTree.new(root: a)
+        binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+        expect(binary_tree_analyzer.binary_search(7)).to be false
+      end
+    end
+
+    context "tree is not a binary search tree" do
+      it "raises an error" do
+        a = BinaryTreeNode.new(8)
+        b = BinaryTreeNode.new(10)
+        c = BinaryTreeNode.new(10)
+        d = BinaryTreeNode.new(1)
+        e = BinaryTreeNode.new(6)
+        f = BinaryTreeNode.new(9)
+        g = BinaryTreeNode.new(14)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.left = f
+        c.right = g
+
+        binary_tree = BinaryTree.new(root: a)
+        binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+        expect { binary_tree_analyzer.binary_search(10) }.to raise_error(InvalidBinarySearchTreeError)
+      end
+    end
+  end
 end
