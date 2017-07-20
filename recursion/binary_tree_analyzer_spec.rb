@@ -233,4 +233,134 @@ describe BinaryTreeAnalyzer do
       end
     end
   end
+
+  describe "#mean" do
+    it "returns the mean number in a binary tree" do
+      a = BinaryTreeNode.new(8)
+      b = BinaryTreeNode.new(3)
+      c = BinaryTreeNode.new(10)
+      d = BinaryTreeNode.new(1)
+      e = BinaryTreeNode.new(6)
+      f = BinaryTreeNode.new(4)
+
+      a.left = b
+      a.right = c
+      b.left = d
+      b.right = e
+      c.left = f
+
+      binary_tree = BinaryTree.new(root: a)
+      binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+      mean = binary_tree_analyzer.mean
+
+      expect(mean).to be_within(0.1).of(5.3)
+    end
+  end
+
+  describe "#median" do
+    context "odd number of leaves" do
+      it "returns the mean number in a binary tree" do
+        a = BinaryTreeNode.new(8)
+        b = BinaryTreeNode.new(3)
+        c = BinaryTreeNode.new(10)
+        d = BinaryTreeNode.new(1)
+        e = BinaryTreeNode.new(6)
+        f = BinaryTreeNode.new(4)
+        g = BinaryTreeNode.new(5)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.left = f
+        c.right = g
+
+        binary_tree = BinaryTree.new(root: a)
+        binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+        median = binary_tree_analyzer.median
+
+        expect(median).to eq(5)
+      end
+    end
+  end
+
+  context "even number of leaves" do
+    it "returns the mean number in a binary tree" do
+      a = BinaryTreeNode.new(8)
+      b = BinaryTreeNode.new(3)
+      c = BinaryTreeNode.new(10)
+      d = BinaryTreeNode.new(1)
+      e = BinaryTreeNode.new(6)
+      f = BinaryTreeNode.new(4)
+
+      a.left = b
+      a.right = c
+      b.left = d
+      b.right = e
+      c.left = f
+
+      binary_tree = BinaryTree.new(root: a)
+      binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+      median = binary_tree_analyzer.median
+
+      expect(median).to eq(5)
+    end
+  end
+
+  describe "#mode" do
+    context "one mode" do
+      it "returns the mode of a binary tree" do
+        a = BinaryTreeNode.new(8)
+        b = BinaryTreeNode.new(6)
+        c = BinaryTreeNode.new(10)
+        d = BinaryTreeNode.new(8)
+        e = BinaryTreeNode.new(6)
+        f = BinaryTreeNode.new(4)
+        g = BinaryTreeNode.new(8)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.left = f
+        c.right = g
+
+        binary_tree = BinaryTree.new(root: a)
+        binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+        mode = binary_tree_analyzer.mode
+
+        expect(mode).to contain_exactly(8)
+      end
+    end
+
+    context "multiple modes" do
+      it "returns the modes of a binary tree" do
+        a = BinaryTreeNode.new(8)
+        b = BinaryTreeNode.new(6)
+        c = BinaryTreeNode.new(10)
+        d = BinaryTreeNode.new(8)
+        e = BinaryTreeNode.new(6)
+        f = BinaryTreeNode.new(6)
+        g = BinaryTreeNode.new(8)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.left = f
+        c.right = g
+
+        binary_tree = BinaryTree.new(root: a)
+        binary_tree_analyzer = BinaryTreeAnalyzer.new(binary_tree)
+
+        mode = binary_tree_analyzer.mode
+
+        expect(mode).to contain_exactly(6, 8)
+      end
+    end
+  end
 end

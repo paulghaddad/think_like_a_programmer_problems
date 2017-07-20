@@ -28,6 +28,31 @@ class BinaryTreeAnalyzer
     search_binary_tree(root, element)
   end
 
+  def mean
+    sum = sum_of_binary_tree_leaves(root)
+    count = binary_tree_leaf_count(root)
+
+    sum / count.to_f
+  end
+
+  def median
+    leaf_values = binary_tree_leaf_values(root).sort
+
+    if leaf_values.size.odd?
+      leaf_values[leaf_values.size / 2]
+    else
+      (leaf_values[leaf_values.size / 2 - 1] + leaf_values[leaf_values.size / 2]) / 2.0
+    end
+  end
+
+  def mode
+    leaf_values = binary_tree_leaf_values(root)
+
+    leaf_values.select do |element|
+      leaf_values.count(element) == 3
+    end.uniq
+  end
+
   private
 
   def largest_node_recursive(root:)
@@ -112,6 +137,37 @@ class BinaryTreeAnalyzer
     else
       false
     end
+  end
+
+  def sum_of_binary_tree_leaves(node)
+    return node.value if node.left.nil? && node.right.nil?
+
+    left_leaf_sum = node.left ? sum_of_binary_tree_leaves(node.left) : 0
+    right_leaf_sum = node.right ? sum_of_binary_tree_leaves(node.right) : 0
+    current_node = node.value
+
+    left_leaf_sum + right_leaf_sum + current_node
+  end
+
+  def binary_tree_leaf_count(node)
+    return if node.nil?
+    return 1 if node.left.nil? && node.right.nil?
+
+    left_leaf_count = node.left ? binary_tree_leaf_count(node.left) : 0
+    right_leaf_count = node.right ? binary_tree_leaf_count(node.right) : 0
+
+
+    left_leaf_count + right_leaf_count + 1
+  end
+
+  def binary_tree_leaf_values(node)
+    return if node.nil?
+    return node.value if node.left.nil? && node.right.nil?
+
+    left_leaf_elements = binary_tree_leaf_values(node.left) if node.left
+    right_leaf_elements = binary_tree_leaf_values(node.right) if node.right
+
+    ([] << left_leaf_elements << right_leaf_elements << node.value).flatten.compact
   end
 end
 
