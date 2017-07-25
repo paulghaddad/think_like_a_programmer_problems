@@ -1,5 +1,6 @@
 require "./student_node"
 require "./first_student_policy"
+require 'pry'
 
 class StudentCollection
   attr_accessor :policy
@@ -7,6 +8,16 @@ class StudentCollection
   def initialize(policy: :name_comes_first)
     @list_head = nil
     @policy = policy
+  end
+
+  def each
+    c = @list_head
+
+    until c == nil
+      yield(c.student_data)
+      c = c.next
+    end
+    self
   end
 
   def add_record(new_student)
@@ -64,17 +75,17 @@ class StudentCollection
   end
 
   def average_grade
-    loop_pointer = @list_head
+    students = self.to_enum
+    num_students = 0
+    sum = 0.0
 
-    number_of_records = 0
-    sum_of_grades = 0.0
-    while loop_pointer
-      number_of_records += 1
-      sum_of_grades += loop_pointer.student_data.numeric_grade
-      loop_pointer = loop_pointer.next
+    loop do
+      current_student = students.next
+      sum += current_student.numeric_grade
+      num_students += 1
     end
 
-    (sum_of_grades / number_of_records).round(2)
+    sum / num_students
   end
 
   def records_within_range(low_grade:, high_grade:)

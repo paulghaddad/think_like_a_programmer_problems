@@ -1,12 +1,12 @@
 require "./student_collection"
 require "./student_record"
+require 'pry'
 
 describe StudentCollection do
   describe "#initialize" do
     context "first student policy not provided" do
       it "sets the names_comes_first_policy by default" do
-        student_collection = StudentCollection.new
-
+        student_collection = StudentCollection.new 
         expect(student_collection).to have_attributes(policy: :name_comes_first)
       end
     end
@@ -79,18 +79,6 @@ describe StudentCollection do
     end
   end
 
-  describe "#average_grade" do
-    it "calculates the average student numeric grade" do
-      student_1 = StudentRecord.new(grade: 100, id: 1575, name: "Steve")
-      student_2 = StudentRecord.new(grade: 90, id: 1576, name: "Bob")
-      student_collection = build_student_collection(student_1, student_2)
-
-      average_grade = student_collection.average_grade
-
-      expect(average_grade).to eq(95.0)
-    end
-  end
-
   describe "#records_within_range" do
     it "returns the students with grades within a range" do
       student_1 = StudentRecord.new(grade: 100, id: 1575, name: "Steve")
@@ -129,6 +117,19 @@ describe StudentCollection do
 
         expect(student_with_highest_grade).to eq(student_2)
       end
+    end
+  end
+
+  describe "#average_grade" do
+    it "averages the student's grades" do
+      student_1 = StudentRecord.new(grade: 94, id: 1575, name: "Chris")
+      student_2 = StudentRecord.new(grade: 100, id: 1576, name: "Bob")
+      student_3 = StudentRecord.new(grade: 90, id: 1577, name: "Adam")
+      student_collection = build_student_collection(student_1, student_2, student_3)
+
+      average_grade = student_collection.average_grade
+
+      expect(average_grade).to be_within(0.1).of(94.6)
     end
   end
 
