@@ -133,6 +133,23 @@ describe StudentCollection do
     end
   end
 
+  describe "#sort_by_grade" do
+    it "uses the default policy to determine the first student" do
+      student_1 = StudentRecord.new(grade: 87, id: 11523, name: "Tom")
+      student_2 = StudentRecord.new(grade: 0, id: 83764, name: "Gladys")
+      student_3 = StudentRecord.new(grade: 0, id: 65342, name: "Sam")
+      student_4 = StudentRecord.new(grade: 84, id: 11523, name: "Jane")
+      student_5 = StudentRecord.new(grade: 0, id: 11764, name: "John")
+      student_6 = StudentRecord.new(grade: 72, id: 77663, name: "Art")
+      student_collection = build_student_collection(student_1, student_2, student_3,
+                                                    student_4, student_5, student_6)
+
+      students_by_grade = student_collection.sort_by_grade
+
+      expect(students_by_grade.map(&:numeric_grade)).to eq([72, 0, 0, 84, 0, 87])
+    end
+  end
+
   private
 
   def build_student_collection(*students)

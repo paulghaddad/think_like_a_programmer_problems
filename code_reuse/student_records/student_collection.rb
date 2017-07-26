@@ -124,4 +124,35 @@ class StudentCollection
 
     highest_sorted_student
   end
+
+  def sort_by_grade
+    student_records_array = student_records_to_array
+
+    valid_records = student_records_array.select { |student| student.numeric_grade > 0 }
+
+    sorted_valid_records = valid_records.sort { |record_1, record_2| record_1.numeric_grade <=> record_2.numeric_grade }
+
+    sorted_student_count = 0
+
+    student_records_array.each.with_index do |student, index|
+      if student.numeric_grade > 0
+        student_records_array[index] = sorted_valid_records[sorted_student_count]
+        sorted_student_count += 1
+      end
+    end
+  end
+
+  private
+
+  def student_records_to_array
+    loop_pointer = @list_head
+    array_of_student_records = []
+
+    while loop_pointer
+      array_of_student_records << loop_pointer.student_data
+      loop_pointer = loop_pointer.next
+    end
+
+    array_of_student_records.reverse
+  end
 end
