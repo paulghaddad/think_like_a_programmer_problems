@@ -1,19 +1,18 @@
 require "./student_collection"
 require "./student_record"
-require 'pry'
 
 describe StudentCollection do
   describe "#initialize" do
     context "first student policy not provided" do
       it "sets the names_comes_first_policy by default" do
-        student_collection = StudentCollection.new 
-        expect(student_collection).to have_attributes(policy: :name_comes_first)
+        student_collection = StudentCollection.new
+        expect(student_collection).to have_attributes(policy: FirstStudentPolicy::NAME_COMES_FIRST)
       end
     end
 
     context "first student policy provided" do
       it "sets the first student policy" do
-        student_collection = StudentCollection.new(policy: :higher_grade)
+        student_collection = StudentCollection.new(FirstStudentPolicy::HIGHER_GRADE)
 
         expect(student_collection).to have_attributes(policy: :higher_grade)
       end
@@ -110,8 +109,7 @@ describe StudentCollection do
         student_1 = StudentRecord.new(grade: 85, id: 1575, name: "Chris")
         student_2 = StudentRecord.new(grade: 100, id: 1576, name: "Bob")
         student_3 = StudentRecord.new(grade: 90, id: 1577, name: "Adam")
-        student_collection = build_student_collection(student_1, student_2, student_3)
-        student_collection.policy = :higher_grade
+        student_collection = build_student_collection(student_1, student_2, student_3, policy: FirstStudentPolicy::HIGHER_GRADE)
 
         student_with_highest_grade = student_collection.first_student
 
@@ -134,7 +132,7 @@ describe StudentCollection do
   end
 
   describe "#sort_by_grade" do
-    it "uses the default policy to determine the first student" do
+    it "sorts the students by grade" do
       student_1 = StudentRecord.new(grade: 87, id: 11523, name: "Tom")
       student_2 = StudentRecord.new(grade: 0, id: 83764, name: "Gladys")
       student_3 = StudentRecord.new(grade: 0, id: 65342, name: "Sam")
@@ -152,8 +150,8 @@ describe StudentCollection do
 
   private
 
-  def build_student_collection(*students)
-    students.inject(StudentCollection.new) do |student_collection, student|
+  def build_student_collection(*students, **options)
+    students.inject(StudentCollection.new(options[:policy])) do |student_collection, student|
       student_collection.add_record(student)
       student_collection
     end

@@ -1,4 +1,8 @@
 class FirstStudentPolicy
+  HIGHER_GRADE = :higher_grade
+  LOWER_STUDENT_NUMBER = :lower_student_number
+  NAME_COMES_FIRST = :name_comes_first
+
   attr_reader :policy, :student_record_1, :student_record_2
 
   def initialize(policy:, student_record_1:, student_record_2:)

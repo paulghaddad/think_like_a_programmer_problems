@@ -1,13 +1,14 @@
 require "./student_node"
 require "./first_student_policy"
-require 'pry'
 
 class StudentCollection
+  DEFAULT_POLICY = FirstStudentPolicy::NAME_COMES_FIRST
+
   attr_accessor :policy
 
-  def initialize(policy: :name_comes_first)
+  def initialize(policy = nil)
     @list_head = nil
-    @policy = policy
+    @policy = policy || DEFAULT_POLICY
   end
 
   def each
@@ -17,6 +18,7 @@ class StudentCollection
       yield(c.student_data)
       c = c.next
     end
+
     self
   end
 
