@@ -1,11 +1,11 @@
-require "./student_collection_with_array"
+require "./student_collection_array"
 require "./student_record"
 
-describe StudentCollectionWithArray do
+describe StudentCollectionArray do
   describe "#add_record" do
     it "adds a single record to the collection" do
       student = StudentRecord.new(grade: 90, id: 1575, name: "Steve")
-      student_collection = StudentCollectionWithArray.new
+      student_collection = StudentCollectionArray.new
 
       student_collection.add_record(student)
 
@@ -83,7 +83,7 @@ describe StudentCollectionWithArray do
   private
 
   def build_student_collection(*students, **options)
-    students.inject(StudentCollectionWithArray.new) do |student_collection, student|
+    students.inject(StudentCollectionArray.new) do |student_collection, student|
       student_collection.add_record(student)
       student_collection
     end
