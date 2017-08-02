@@ -1,7 +1,7 @@
 require "./student_node"
-require 'pry'
+require "./student_collection_interface"
 
-class StudentCollectionWithArray
+class StudentCollectionWithArray < StudentCollectionInterface
   attr_reader :students
 
   def initialize
