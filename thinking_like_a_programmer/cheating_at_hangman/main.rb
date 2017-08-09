@@ -33,7 +33,9 @@ def count_words_without_letter(list, letter)
 end
 
 def remove_words_of_wrong_length(list, acceptable_length)
-
+  list.reject! do |word|
+    word.length == acceptable_length
+  end
 end
 
 word_list = read_word_file("word_list.txt")
@@ -41,3 +43,7 @@ word_list = read_word_file("word_list.txt")
 letter = "a"
 puts "\nCount of words without the letter #{letter}:"
 puts count_words_without_letter(word_list, letter)
+
+acceptable_length = 4
+remove_words_of_wrong_length(word_list, acceptable_length)
+
