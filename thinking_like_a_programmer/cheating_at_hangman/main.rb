@@ -38,6 +38,10 @@ def remove_words_of_wrong_length(list, acceptable_length)
   end
 end
 
+def number_in_pattern?(list, number)
+  list.any? { |word| word.length >= number }
+end
+
 word_list = read_word_file("word_list.txt")
 
 letter = "a"
@@ -47,3 +51,4 @@ puts count_words_without_letter(word_list, letter)
 acceptable_length = 4
 remove_words_of_wrong_length(word_list, acceptable_length)
 
+puts number_in_pattern?(word_list, 4)
