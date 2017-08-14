@@ -62,7 +62,46 @@ end
 
 def remove_words_with_letter!(list, forbidden_letter)
   list.reject! { |word| word.match(forbidden_letter) }
-  binding.pry
+end
+
+def count_of_words_matching_pattern(list, letter, pattern)
+  count = 0
+
+  list.each do |word|
+    if matches_pattern?(word, letter, pattern)
+      count += 1
+      list.delete(word)
+    end
+  end
+
+  count
+end
+
+def most_freq_pattern_by_letter(list, letter)
+  remove_words_without_letter!(list, letter)
+  max_pattern_count = 0
+  max_pattern = Set.new
+
+  list.each do |word|
+    current_pattern = Set.new
+
+    word.each_char.with_index do |char, index|
+      if char == letter
+        current_pattern << index
+      end
+    end
+
+    list.delete(word)
+
+    current_pattern_count = 1 + count_of_words_matching_pattern(list, letter, current_pattern)
+
+    if current_pattern_count > max_pattern_count
+      max_pattern_count = current_pattern_count
+      max_pattern = current_pattern
+    end
+  end
+
+  return max_pattern, max_pattern_count
 end
 
 word_list = read_word_file("word_list.txt")
@@ -78,14 +117,19 @@ remove_words_of_wrong_length!(word_list, acceptable_length)
 
 # remove_words_without_letter!(word_list, "a")
 
-pattern_1 = Set.new([1, 3, 4])
-puts number_in_pattern?(pattern_1, 4)
+# pattern_1 = Set.new([1, 3, 4])
+# puts number_in_pattern?(pattern_1, 4)
+#
+# pattern_2 = Set.new([1])
+# puts matches_pattern?("world", "o", pattern_2)
+#
+# pattern_3 = Set.new([1])
+# puts matches_pattern?("world", "w", pattern_3)
+#
+# pattern_4 = Set.new([1])
+# puts matches_pattern?("woorld", "o", pattern_4)
 
-pattern_2 = Set.new([1])
-puts matches_pattern?("world", "o", pattern_2)
+most_common_pattern = most_freq_pattern_by_letter(word_list, "a")
+puts most_common_pattern.first.inspect
+puts most_common_pattern.last
 
-pattern_3 = Set.new([1])
-puts matches_pattern?("world", "w", pattern_3)
-
-pattern_4 = Set.new([1])
-puts matches_pattern?("woorld", "o", pattern_4)
