@@ -104,6 +104,16 @@ def most_freq_pattern_by_letter(list, letter)
   return max_pattern, max_pattern_count
 end
 
+def display_guessed_letters(letters)
+  puts "Letters guessed: "
+
+  letters.each.with_index do |letter, index|
+    if letter
+      puts (index + "a".ord).chr
+    end
+  end
+end
+
 word_list = read_word_file("word_list.txt")
 
 letter = "a"
@@ -133,3 +143,8 @@ most_common_pattern = most_freq_pattern_by_letter(word_list, "a")
 puts most_common_pattern.first.inspect
 puts most_common_pattern.last
 
+letters = Array.new(26, false)
+letters[2] = true
+letters[4] = true
+
+display_guessed_letters(letters)
