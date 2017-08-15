@@ -114,14 +114,29 @@ def display_guessed_letters(letters)
   end
 end
 
-word_list = read_word_file("word_list.txt")
+WORD_LENGTH = 8.freeze
+MAX_MISSES = 9.freeze
 
-letter = "a"
-puts "\nCount of words without the letter #{letter}:"
-puts count_words_without_letter(word_list, letter)
+def main
+  word_list = read_word_file("word_list.txt")
+  misses = 0
+  discovered_letter_count = 0
+  remove_words_of_wrong_length!(word_list, WORD_LENGTH)
+  revealed_word = "*" * WORD_LENGTH
+  guessed_letters = Array.new(26, false)
+  # next_letter
+  puts "Word so far: #{revealed_word}"
+  binding.pry
+end
 
-acceptable_length = 4
-remove_words_of_wrong_length!(word_list, acceptable_length)
+main
+
+# letter = "a"
+# puts "\nCount of words without the letter #{letter}:"
+# puts count_words_without_letter(word_list, letter)
+#
+# acceptable_length = 4
+# remove_words_of_wrong_length!(word_list, acceptable_length)
 
 # remove_words_with_letter!(word_list, "a")
 
@@ -139,12 +154,12 @@ remove_words_of_wrong_length!(word_list, acceptable_length)
 # pattern_4 = Set.new([1])
 # puts matches_pattern?("woorld", "o", pattern_4)
 
-most_common_pattern = most_freq_pattern_by_letter(word_list, "a")
-puts most_common_pattern.first.inspect
-puts most_common_pattern.last
-
-letters = Array.new(26, false)
-letters[2] = true
-letters[4] = true
-
-display_guessed_letters(letters)
+# most_common_pattern = most_freq_pattern_by_letter(word_list, "a")
+# puts most_common_pattern.first.inspect
+# puts most_common_pattern.last
+#
+# letters = Array.new(26, false)
+# letters[2] = true
+# letters[4] = true
+#
+# display_guessed_letters(letters)
