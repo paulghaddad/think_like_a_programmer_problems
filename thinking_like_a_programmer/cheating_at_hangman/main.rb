@@ -78,11 +78,12 @@ def count_of_words_matching_pattern(list, letter, pattern)
 end
 
 def most_freq_pattern_by_letter(list, letter)
-  remove_words_without_letter!(list, letter)
+  temp_list = list.dup
+  remove_words_without_letter!(temp_list, letter)
   max_pattern_count = 0
   max_pattern = Set.new
 
-  list.each do |word|
+  temp_list.each do |word|
     current_pattern = Set.new
 
     word.each_char.with_index do |char, index|
@@ -91,9 +92,9 @@ def most_freq_pattern_by_letter(list, letter)
       end
     end
 
-    list.delete(word)
+    temp_list.delete(word)
 
-    current_pattern_count = 1 + count_of_words_matching_pattern(list, letter, current_pattern)
+    current_pattern_count = 1 + count_of_words_matching_pattern(temp_list, letter, current_pattern)
 
     if current_pattern_count > max_pattern_count
       max_pattern_count = current_pattern_count
@@ -114,6 +115,16 @@ def display_guessed_letters(letters)
   end
 end
 
+def reduce_by_pattern(list, letter, pattern)
+  new_list = []
+
+  list.each do |word|
+    new_list << word if matches_pattern?(word, letter, pattern)
+  end
+
+  new_list
+end
+
 WORD_LENGTH = 8.freeze
 MAX_MISSES = 9.freeze
 
@@ -126,7 +137,39 @@ def main
   guessed_letters = Array.new(26, false)
   # next_letter
   puts "Word so far: #{revealed_word}"
-  binding.pry
+
+  while (discovered_letter_count < WORD_LENGTH && misses < MAX_MISSES)
+    print "Letter to guess: "
+    next_letter = gets.chomp.downcase
+    guessed_letters[next_letter.ord - "a".ord] = true
+    missing_count = count_words_without_letter(word_list, next_letter)
+
+    next_pattern, next_pattern_count = most_freq_pattern_by_letter(word_list, next_letter)
+
+    if missing_count > next_pattern_count
+      puts "Missed!"
+      remove_words_with_letter!(word_list, next_letter)
+      misses += 1
+    else
+      puts "Discovered letter"
+
+      next_pattern.each do |place|
+        discovered_letter_count += 1
+        revealed_word[place] = next_letter
+      end
+
+      word_list = reduce_by_pattern(word_list, next_letter, next_pattern)
+    end
+
+    puts "Word so far: #{revealed_word}"
+    display_guessed_letters(guessed_letters)
+  end
+
+  if misses == MAX_MISSES
+    puts "Sorry. You lost. The word I was thinking of was #{word_list.sample}."
+  else
+    puts "Great job. You win. Word was #{revealed_word}."
+  end
 end
 
 main
