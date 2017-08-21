@@ -1,5 +1,5 @@
 class Game
-  attr_reader :possible_words, :misses, :discovered_letter_count, :word_length, :hidden_word
+  attr_reader :possible_words, :misses, :discovered_letter_count, :word_length, :hidden_word, :revealed_word
 
   def initialize(words:, word_length:)
     @word_length = word_length
@@ -7,6 +7,7 @@ class Game
     @misses = 0
     @discovered_letter_count = 0
     @hidden_word = select_hidden_word
+    @revealed_word = "*" * word_length
   end
 
   private

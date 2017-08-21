@@ -22,6 +22,12 @@ describe Game do
 
       expect(game.hidden_word.length).to eq(5)
     end
+
+    it "hides the letters of the revealed word" do
+      game = Game.new(words: dictionary, word_length: 5)
+
+      expect(game.revealed_word).to eq("*****")
+    end
   end
 
   private
