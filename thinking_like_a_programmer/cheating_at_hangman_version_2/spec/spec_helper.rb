@@ -1,3 +1,1 @@
-RSpec.configure do |config|
-  config.pattern = '**/*.spec'
-end
+Dir.glob(File.expand_path(File.join(File.dirname(__FILE__), "..", "lib", "**", "*.rb"))).each { |f| require f }

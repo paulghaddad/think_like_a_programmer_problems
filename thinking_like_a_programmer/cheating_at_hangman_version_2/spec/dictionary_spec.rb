@@ -1,5 +1,3 @@
-require_relative "../lib/dictionary"
-
 describe Dictionary do
   describe "#words" do
     it "is a collection of words without special characters" do
