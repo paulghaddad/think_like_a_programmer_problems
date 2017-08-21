@@ -30,6 +30,41 @@ describe Game do
     end
   end
 
+  describe "#guess" do
+    context "guess correct" do 
+      it "increments the discovered letter count" do
+        dictionary = Set.new(["apple"])
+        game = Game.new(words: dictionary, word_length: 5)
+
+        expect { game.guess_letter("a") }.
+          to change { game.discovered_letter_count }.from(0).to(1)
+      end
+
+      it "reveals a letter" do
+
+      end
+    end
+
+    context "guess incorrect" do
+
+    end
+  end
+
+  describe "#status" do
+    context "word not guessed and under max misses limit" do
+      it "has a status of in_progress" do
+      end
+    end
+
+    context "word guessed" do
+
+    end
+
+    context "max misses limit exceeded" do
+
+    end
+  end
+
   private
 
   def dictionary

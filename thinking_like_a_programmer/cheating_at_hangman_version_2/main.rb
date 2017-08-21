@@ -3,7 +3,7 @@ require "./lib/dictionary"
 require "./lib/game"
 require 'pry'
 
-word_set_path = File.join(File.dirname(__FILE__), "..", "word_list.txt")
+word_set_path = File.join(File.dirname(__FILE__), "word_list.txt")
 imported_words = WordImporter.import(word_set_path)
 
 dictionary = Dictionary.new(imported_words)

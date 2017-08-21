@@ -10,6 +10,10 @@ class Game
     @revealed_word = "*" * word_length
   end
 
+  def guess_letter(letter)
+    @discovered_letter_count += 1
+  end
+
   private
 
     def filter_words_by_length(words, word_length)
