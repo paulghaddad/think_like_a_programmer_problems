@@ -28,6 +28,7 @@ class Game
     end
 
     update_game_status
+    puts "Word guessed so far: #{revealed_word}"
   end
 
   private
