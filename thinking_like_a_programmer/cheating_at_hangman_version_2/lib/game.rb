@@ -1,3 +1,5 @@
+require 'pry'
+
 class Game
   attr_reader :possible_words, :misses, :discovered_letter_count, :word_length, :hidden_word, :revealed_word
 
@@ -11,7 +13,16 @@ class Game
   end
 
   def guess_letter(letter)
-    @discovered_letter_count += 1
+    hidden_word.each_char.with_index do |char, index|
+      if char == letter
+        @revealed_word[index] = char
+        @discovered_letter_count += 1
+      end
+    end
+
+    unless hidden_word.match(letter)
+      @misses += 1
+    end
   end
 
   private

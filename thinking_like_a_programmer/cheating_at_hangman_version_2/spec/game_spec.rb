@@ -40,13 +40,40 @@ describe Game do
           to change { game.discovered_letter_count }.from(0).to(1)
       end
 
-      it "reveals a letter" do
+      it "does not increment the misses count" do
+        dictionary = Set.new(["apple"])
+        game = Game.new(words: dictionary, word_length: 5)
 
+        expect { game.guess_letter("a") }.
+          to_not change { game.misses }
+      end
+
+      it "reveals a letter" do
+        dictionary = Set.new(["apple"])
+        game = Game.new(words: dictionary, word_length: 5)
+
+        game.guess_letter("a")
+
+        expect(game.revealed_word).to eq("a****")
       end
     end
 
     context "guess incorrect" do
+      it "increments the misses count" do
+        dictionary = Set.new(["apple"])
+        game = Game.new(words: dictionary, word_length: 5)
 
+        expect { game.guess_letter("z") }.
+          to change { game.misses }.from(0).to(1)
+      end
+
+      it "does not increment the discovered letter count" do
+        dictionary = Set.new(["apple"])
+        game = Game.new(words: dictionary, word_length: 5)
+
+        expect { game.guess_letter("z") }.
+          to_not change { game.discovered_letter_count }
+      end
     end
   end
 
