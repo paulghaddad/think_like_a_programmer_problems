@@ -80,15 +80,35 @@ describe Game do
   describe "#status" do
     context "word not guessed and under max misses limit" do
       it "has a status of in_progress" do
+        dictionary = Set.new(["apple"])
+        game = Game.new(words: dictionary, word_length: 5, max_misses: 2)
+
+        game.guess_letter("a")
+
+        expect(game.status).to eq(:in_progress)
       end
     end
 
     context "word guessed" do
+      it "has a status of won" do
+        dictionary = Set.new(["a"])
+        game = Game.new(words: dictionary, word_length: 1, max_misses: 2)
 
+        game.guess_letter("a")
+
+        expect(game.status).to eq(:won)
+      end
     end
 
     context "max misses limit exceeded" do
+      it "has a status of lost" do
+        dictionary = Set.new(["apple"])
+        game = Game.new(words: dictionary, word_length: 5, max_misses: 1)
 
+        game.guess_letter("z")
+
+        expect(game.status).to eq(:lost)
+      end
     end
   end
 
