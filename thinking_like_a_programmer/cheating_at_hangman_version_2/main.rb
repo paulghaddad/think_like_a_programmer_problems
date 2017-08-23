@@ -12,3 +12,16 @@ print "Enter the word length to play with: "
 word_length = gets.chomp.to_i
 
 game = Game.new(words: dictionary.words, word_length: word_length)
+
+while game.status == :in_progress
+  print "Letter to guess: "
+  guessed_letter = gets.chomp.downcase
+
+  game.guess_letter(guessed_letter)
+end
+
+if game.status == :won
+  puts "Congratulations! You won. The word was #{game.revealed_word}"
+elsif game.status == :lost
+  puts "Sorry, you lost. The word was #{game.revealed_word}"
+end
