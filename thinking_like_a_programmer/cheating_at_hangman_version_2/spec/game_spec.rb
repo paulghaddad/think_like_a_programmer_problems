@@ -39,6 +39,16 @@ describe Game do
         to output { "Word guessed so far: a****" }.to_stdout
     end
 
+    it "outputs the guessed letters" do
+      dictionary = Set.new(["apple"])
+      game = Game.new(words: dictionary, word_length: 5)
+
+      game.guess_letter("z")
+      game.guess_letter("y")
+      # expect { game.guess_letter("z") }.
+      #   to output { "Letters guessed so far: z" }.to_stdout
+    end
+
     context "guess correct" do 
       it "increments the discovered letter count" do
         dictionary = Set.new(["apple"])

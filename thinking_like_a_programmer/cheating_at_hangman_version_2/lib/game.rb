@@ -14,6 +14,7 @@ class Game
     @max_misses = max_misses
     @status = :in_progress
     @cheater = build_cheater
+    @guessed_letters = Set.new
   end
 
   def guess_letter(letter)
@@ -21,6 +22,7 @@ class Game
       # Need to update this for multiple letter matches
       @discovered_letter_count += 1
       update_revealed_word(letter)
+
       # TODO: Probably need to extract a pattern analyzer class
       # @possible_words = remove_words_matching_pattern
     else
@@ -28,11 +30,10 @@ class Game
       @possible_words = remove_words_with_letter(letter)
     end
 
+    @guessed_letters << letter
     update_game_status
     puts "Word guessed so far: #{revealed_word}"
-
-    # TODO
-    # display_guessed_letters
+    puts "Letters guessed so far: #{@guessed_letters.entries.sort.join(", ")}"
   end
 
   private
