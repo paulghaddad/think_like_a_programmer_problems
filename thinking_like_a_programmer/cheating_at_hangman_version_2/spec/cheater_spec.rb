@@ -2,7 +2,7 @@ describe Cheater do
   describe "#match?" do
     context "most frequent letter count greater than words without guessed letter" do
       it "returns true" do
-        cheater = Cheater.new(word_set: Set.new(["apple", "airplane"]), winning_word: "apple")
+        cheater = Cheater.new(word_set: Set.new(["apple", "airpa"]), winning_word: "apple")
 
         result = cheater.match?("a")
 
@@ -12,7 +12,7 @@ describe Cheater do
 
     context "words without guessed letter greater than most frequent letter count" do
       it "returns false" do
-        cheater = Cheater.new(word_set: Set.new(["apple", "orange"]), winning_word: "apple")
+        cheater = Cheater.new(word_set: Set.new(["apple", "orang"]), winning_word: "apple")
 
         result = cheater.match?("z")
 

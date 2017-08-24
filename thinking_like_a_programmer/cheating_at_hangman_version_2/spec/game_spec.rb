@@ -82,6 +82,15 @@ describe Game do
         expect { game.guess_letter("z") }.
           to_not change { game.discovered_letter_count }
       end
+
+      it "removes words matching the letter from the possible words" do
+        dictionary = Set.new(["apple", "zebra"])
+        game = Game.new(words: dictionary, word_length: 5)
+
+        game.guess_letter("z")
+
+        expect(game.possible_words).to contain_exactly("apple")
+      end
     end
   end
 

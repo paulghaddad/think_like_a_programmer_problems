@@ -18,14 +18,21 @@ class Game
 
   def guess_letter(letter)
     if cheater.match?(letter)
+      # Need to update this for multiple letter matches
       @discovered_letter_count += 1
       update_revealed_word(letter)
+      # TODO: Probably need to extract a pattern analyzer class
+      # @possible_words = remove_words_matching_pattern
     else
       @misses += 1
+      @possible_words = remove_words_with_letter(letter)
     end
 
     update_game_status
     puts "Word guessed so far: #{revealed_word}"
+
+    # TODO
+    # display_guessed_letters
   end
 
   private
@@ -56,5 +63,9 @@ class Game
       elsif misses == max_misses
         @status = :lost
       end
+    end
+
+    def remove_words_with_letter(letter)
+      possible_words.reject { |word| word.match(letter) }
     end
 end
