@@ -1,4 +1,3 @@
-require 'pry'
 class Cheater
   attr_reader :word_set, :winning_word
 
@@ -8,10 +7,22 @@ class Cheater
   end
 
   def match?(letter)
-    words_without_letter_count = words_without_letter(letter).size
     most_frequent_letter_count = patterns_by_count(letter).values.max
+    words_without_letter_count = words_without_letter(letter).size
 
     most_frequent_letter_count > words_without_letter_count
+  end
+
+  def remove_words_matching_most_frequent_pattern(letter)
+    most_frequent_pattern = most_frequent_pattern_by_letter(letter)
+
+    word_set.inject(Set.new) do |updated_word_set, word|
+      if matches_pattern?(most_frequent_pattern, word, letter)
+        updated_word_set << word
+      else
+        updated_word_set
+      end
+    end
   end
 
   private
@@ -22,7 +33,7 @@ class Cheater
 
     def patterns_by_count(letter)
       word_length = word_set.first.length
-      patterns = ["t", "f"].repeated_permutation(word_length).to_a
+      patterns = ["t", "f"].repeated_permutation(word_length).to_a.select { |pattern| pattern.include?("t") }
 
       pattern_count = patterns.inject({}) do |count, permutation|
         count[permutation.join.to_sym] = 0
@@ -64,5 +75,9 @@ class Cheater
       end
 
       match
+    end
+
+    def most_frequent_pattern_by_letter(letter)
+      patterns_by_count(letter).max_by { |_pattern, count| count }.first
     end
 end

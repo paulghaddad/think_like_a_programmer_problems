@@ -1,4 +1,5 @@
 require 'pry'
+require './lib/cheater'
 
 class Game
   attr_reader :possible_words, :misses, :discovered_letter_count, :word_length, :hidden_word, :revealed_word, :status, :max_misses, :cheater
@@ -18,13 +19,14 @@ class Game
   end
 
   def guess_letter(letter)
+    binding.pry
     if cheater.match?(letter)
       # Need to update this for multiple letter matches
       @discovered_letter_count += 1
       update_revealed_word(letter)
 
       # TODO: Probably need to extract a pattern analyzer class
-      # @possible_words = remove_words_matching_pattern
+      @possible_words = remove_words_matching_pattern(letter)
     else
       @misses += 1
       @possible_words = remove_words_with_letter(letter)
@@ -68,5 +70,9 @@ class Game
 
     def remove_words_with_letter(letter)
       possible_words.reject { |word| word.match(letter) }
+    end
+
+    def remove_words_matching_pattern(letter)
+      cheater.remove_words_matching_most_frequent_pattern(letter)
     end
 end

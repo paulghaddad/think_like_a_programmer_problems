@@ -21,7 +21,7 @@ while game.status == :in_progress
 end
 
 if game.status == :won
-  puts "Congratulations! You won. The word was #{game.revealed_word}"
+  puts "Congratulations! You won. The word was #{game.hidden_word}"
 elsif game.status == :lost
-  puts "Sorry, you lost. The word was #{game.revealed_word}"
+  puts "Sorry, you lost. The word was #{game.hidden_word}"
 end
