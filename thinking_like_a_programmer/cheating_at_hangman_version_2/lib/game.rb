@@ -19,13 +19,10 @@ class Game
   end
 
   def guess_letter(letter)
-    binding.pry
     if cheater.match?(letter)
-      # Need to update this for multiple letter matches
-      @discovered_letter_count += 1
+      update_discovered_letter_count(letter)
       update_revealed_word(letter)
 
-      # TODO: Probably need to extract a pattern analyzer class
       @possible_words = remove_words_matching_pattern(letter)
     else
       @misses += 1
@@ -74,5 +71,13 @@ class Game
 
     def remove_words_matching_pattern(letter)
       cheater.remove_words_matching_most_frequent_pattern(letter)
+    end
+
+    def update_discovered_letter_count(letter)
+      hidden_word.each_char do |char|
+        if char == letter
+          @discovered_letter_count += 1
+        end
+      end
     end
 end
