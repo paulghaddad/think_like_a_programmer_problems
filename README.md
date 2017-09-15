@@ -60,11 +60,9 @@ Problems from the book, Think Like a Programmer
 * [6.4](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/6_4.rb)
 
 ## Code Reuse
-* The First Student
-* Efficient Traversal
-* Student Records
+* [Student Records](https://github.com/paulghaddad/think_like_a_programmer_problems/tree/master/code_reuse/student_records)
 
 ## Large Problems
-* Cheating at Hangman
-  * Version 1: Procedural
-  * Version 2: Object-Oriented
+* [Cheating at Hangman](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/thinking_like_a_programmer/cheating_at_hangman_problem.rb)
+  * [Version 1: Procedural](https://github.com/paulghaddad/think_like_a_programmer_problems/tree/master/thinking_like_a_programmer/cheating_at_hangman_version_1)
+  * [Version 2: Object-Oriented](https://github.com/paulghaddad/think_like_a_programmer_problems/tree/master/thinking_like_a_programmer/cheating_at_hangman_version_2)
