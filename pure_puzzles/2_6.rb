@@ -1,3 +1,9 @@
+=begin
+  If you've learned about binary numbers and how to convert from decimal to binary
+  and the reverse, try writing programs to do those conversions with unlimited length 
+  numbers.
+=end
+
 class BinaryDecimalConverter
   def self.to_binary(decimal_number)
     binary_digits = []
