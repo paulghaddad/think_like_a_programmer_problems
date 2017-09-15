@@ -1,3 +1,10 @@
+=begin
+  In statistics, the mode of a set of values is the value that appears most 
+  often. Write code that processes an array of survey data, whether survey takers
+  have responded to a question with a number in the range 1-10, to determine the
+  mode of the data set. For our purpose, if multiple modes exist, any may be chosen.
+=end
+
 class StatisticsAnalyzer
   MAX_RESPONSE = 10
 

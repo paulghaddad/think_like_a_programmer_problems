@@ -20,16 +20,15 @@ Problems from the book, Think Like a Programmer
 * [2.6](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/pure_puzzles/2_6.rb)
 
 ## Arrays
-* Finding the mode
-* 3.1
-* 3.2
-* 3.3
-* 3.4
-* 3.5
-* 3.6
-* 3.7
-* 3.8
-* 3.9
+* [Finding the mode](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/arrays/finding_the_mode.rb)
+* [3.1](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/arrays/3_1.rb)
+* [3.2](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/arrays/3_2.rb)
+* [3.3](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/arrays/3_3.rb)
+* [3.4 and 3.5](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/arrays/3_4_5.rb)
+* [3.6](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/arrays/3_6.rb)
+* [3.7](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/arrays/3_7.rb)
+* [3.8](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/arrays/3_8.rb)
+* [3.9](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/arrays/3_9.rb)
 
 ## Classes
 * Automobile
