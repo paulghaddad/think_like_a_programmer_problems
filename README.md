@@ -36,27 +36,28 @@ Problems from the book, Think Like a Programmer
 * [Class Roster](https://github.com/paulghaddad/think_like_a_programmer_problems/tree/master/classes/student_records)
 
 ## Recursion
-* Computing the sum of an array of numbers
-* Binary Tree Analyzer:
-  * Largest node
-  * Number of leaves
-  * Is a heap?
-  * Binary Search Tree?
-  * Binary Search
-  * Mean
-  * Median
-  * Mode
-* Linked List Analyzer
-  * Count of negative numbers
-  * List values in order
-  * List values in reverse order
-  * Odd parity?
-  * Count of an element
-  * Largest number
-* 6.1
-* 6.2
-* 6.3
-* 6.4
+* [Computing the sum of an array of numbers](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/sum_of_array_of_numbers.rb)
+* [Binary Tree Analyzer](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/binary_tree_analyzer.rb)
+  * [Largest node](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/binary_tree_analyzer.rb#L10)
+  * [Number of leaves](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/binary_tree_analyzer.rb#L14)
+  * [Is a heap?](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/binary_tree_analyzer.rb#L18)
+  * [Binary Search Tree?](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/binary_tree_analyzer.rb#L22)
+  * [Binary Search](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/binary_tree_analyzer.rb#L26)
+  * [Mean](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/binary_tree_analyzer.rb#L31)
+  * [Median](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/binary_tree_analyzer.rb#L38)
+  * [Mode](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/binary_tree_analyzer.rb#L48)
+* [Linked List Analyzer](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/linked_list_analyzer.rb)
+  * [Count of negative numbers](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/linked_list_analyzer.rb#L10)
+  * [List values in order](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/linked_list_analyzer.rb#L14)
+  * [List values in reverse order](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/linked_list_analyzer.rb#L18)
+  * [Sum of Positive Numbers](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/linked_list_analyzer.rb#L22)
+  * [Odd parity?](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/linked_list_analyzer.rb#L26)
+  * [Count of an element](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/linked_list_analyzer.rb#L30)
+  * [Largest number](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/linked_list_analyzer.rb#L34)
+* [6.1](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/6_1.rb)
+* [6.2](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/6_2.rb)
+* [6.3](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/6_3.rb)
+* [6.4](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/recursion/6_4.rb)
 
 ## Code Reuse
 * The First Student
