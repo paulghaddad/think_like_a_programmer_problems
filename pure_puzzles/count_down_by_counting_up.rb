@@ -1,3 +1,9 @@
+=begin
+  Write a line of code that goes in the designated position in th eloop in the
+  listing below. The program displays the numbers 5 through 1, in that order,
+  with each number on a separate line.
+=end
+
 def count_down(max)
   output = ""
 

@@ -1,3 +1,9 @@
+=begin
+  Write a program that produces a line of five hash symbols:
+
+  #####
+=end
+
 def a_line(length:)
   # Using Ruby Blocks
   "#{'#' * length}\n"

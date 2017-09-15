@@ -1,3 +1,14 @@
+=begin
+  Write a program that uses only two output statements to produce a pattern of
+  hash symbols shaped like a perfect 5x5 square.
+
+  #####
+  #####
+  #####
+  #####
+  #####
+=end
+
 def square(height:)
   # Using Ruby Block syntax
   # output = ""

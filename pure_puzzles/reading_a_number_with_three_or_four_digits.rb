@@ -1,3 +1,9 @@
+=begin
+  Write a program to read a number character by character and convert it to an
+  integer, using just one char variable and one int variable. The number will have
+  either three or four digits.
+=end
+
 def convert_three_or_four_digit_char_to_int
   puts "Please enter a three or four digit number: "
   overall_int = 0

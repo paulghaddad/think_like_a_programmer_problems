@@ -1,3 +1,16 @@
+=begin
+  Write a program to produce a pattern of hash symbols shaped like a sideways
+  triangle:
+
+  #
+  ##
+  ###
+  ####
+  ###
+  ##
+  #
+=end
+
 def sideways_triangle(height:)
   output = ""
 

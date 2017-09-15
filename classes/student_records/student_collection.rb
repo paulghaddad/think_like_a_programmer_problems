@@ -1,5 +1,4 @@
 require "./student_node"
-require 'pry'
 
 class StudentCollection
   def initialize

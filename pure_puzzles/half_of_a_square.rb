@@ -1,18 +1,15 @@
+=begin
+  Write a program that uses only two output statements to produce a pattern of
+  hash symbols shaped like half of a perfect 5 x 5 square (for a right triangle):
+
+  #####
+  ####
+  ###
+  ##
+  #
+=end
+
 def half_of_a_square(height:)
-  # height.downto(1).inject("") do |shape, line_number|
-  #   shape << "#{'#' * line_number}\n"
-  # end
-
-  # Using a for loop
-
-  # shape = ""
-  #
-  # for i in height..1
-  #   shape << "#{'#' * i}\n"
-  # end
-  #
-  # shape
-
   output = ""
 
   for row in 1..height
