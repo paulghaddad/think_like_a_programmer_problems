@@ -1,4 +1,4 @@
-require "./grade"
+require_relative "grade"
 
 class StudentRecord
   attr_accessor :id, :name

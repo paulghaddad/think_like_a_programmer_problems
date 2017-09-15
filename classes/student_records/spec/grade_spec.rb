@@ -1,4 +1,4 @@
-require "./grade"
+require_relative "../lib/grade"
 
 describe Grade do
   describe "#initialize" do

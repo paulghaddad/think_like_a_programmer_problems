@@ -1,4 +1,4 @@
-require "./student_node"
+require_relative "student_node"
 
 class StudentCollection
   def initialize

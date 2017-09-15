@@ -1,4 +1,4 @@
-require "./student_record"
+require_relative "../lib/student_record"
 
 describe StudentRecord do
   describe "#initialize" do

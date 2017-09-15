@@ -1,5 +1,5 @@
-require "./student_node"
-require "./student_record"
+require_relative "../lib/student_node"
+require_relative "../lib/student_record"
 
 describe StudentNode do
   describe "#initialize" do

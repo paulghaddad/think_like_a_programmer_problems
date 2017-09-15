@@ -1,5 +1,5 @@
-require "./student_collection"
-require "./student_record"
+require "./lib/student_collection"
+require "./lib/student_record"
 
 student_collection = StudentCollection.new
 student_4 = StudentRecord.new(grade: 84, id: 1152, name: "Sue")

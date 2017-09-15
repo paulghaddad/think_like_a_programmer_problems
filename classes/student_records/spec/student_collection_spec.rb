@@ -1,5 +1,5 @@
-require "./student_collection"
-require "./student_record"
+require_relative "../lib/student_collection"
+require_relative "../lib/student_record"
 
 describe StudentCollection do
   describe "#add_record" do

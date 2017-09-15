@@ -1,4 +1,4 @@
-require "./invalid_grade_error"
+require_relative "invalid_grade_error"
 
 class Grade
   NUMBER_CATEGORIES = 11
