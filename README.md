@@ -31,8 +31,8 @@ Problems from the book, Think Like a Programmer
 * [3.9](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/arrays/3_9.rb)
 
 ## Classes
-* Automobile
-* String Manipulator
+* [Automobile](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/classes/automobile.rb)
+* [String Manipulator](https://github.com/paulghaddad/think_like_a_programmer_problems/blob/master/classes/string_manipulator.rb)
 * [Class Roster](https://github.com/paulghaddad/think_like_a_programmer_problems/tree/master/classes/student_records)
 
 ## Recursion
